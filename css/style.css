@@ -1,0 +1,23 @@
+/* -----------------------------------GLOBALI----------------------------------- */
+
+:root {
+  --primary-color: #7c69a4;
+  --secondary-color: #ff9613;
+  --background-body: #f6f5f3;
+  --font-primary: "Montserrat", "Helvetica Neue", sans-serif;
+  --font-secondary: "Nerko One", cursive;
+}
+
+/* ----------------------------------- DEBUG -----------------------------------*/
+
+.db-color1 {
+  background-color: green;
+}
+
+.db-color2 {
+  background-color: yellow;
+}
+
+.db-color3 {
+  background-color: blue;
+}
