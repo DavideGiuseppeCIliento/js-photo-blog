@@ -1,34 +1,54 @@
 // # DICHIARAZIONI GLOBALI
-// Dichiarazione array di oggetti
-infoCard = [];
 
+// # ACQUISIZIONE
 // Dichiarazione Stringa HTML
-cardHTML = "";
+const rowForCard = document.getElementById("row-for-card");
 
 // # CHIAMATA API
 
 // Richiediamo i dati API
 axios.get("https://lanciweb.github.io/demo/api/pictures/").then((response) => {
+  // Dichiarazione array di oggetti
+  const infoCard = [];
   let dataAPI = response.data;
-  for (let i = 0; i < 6; i++) {
-    // Leggo i dati API
-    let title = dataAPI[i].title;
-    let date = dataAPI[i].date;
-    let image = dataAPI[i].url;
 
-    // Creo oggetto con i dati API
-    const newObj = { title, date, image };
+  for (let i = 0; i < dataAPI.length; i++) {
+    // Leggo i dati API e li pusho nell'array
+    infoCard.push({
+      title: dataAPI[i].title,
+      date: dataAPI[i].date,
+      image: dataAPI[i].url,
+    });
 
-    // Push oggetto in inoCard
-    infoCard.push(newObj);
-
-    console.log(infoCard[i].title);
-    console.log(infoCard[i].date);
-    console.log(infoCard[i].image);
+    // // Console Test
+    // console.log(infoCard[i].title);
+    // console.log(infoCard[i].date);
+    // console.log(infoCard[i].image);
   }
-  //   Termine caricamento
 
-  if (infoCard.length === 6) {
-    console.table(infoCard);
-  }
+  stampaHTML(infoCard);
 });
+
+// FUNZIONE DI STAMPA
+const stampaHTML = (infoCard) => {
+  // Dichiarazione Stringa HTML
+  let cardHTML = "";
+  for (let i = 0; i < infoCard.length; i++) {
+    // Creazione STRING HTML
+    cardHTML += `<div class="col-12 col-md-6 col-lg-4 p-3 position-relative ">
+      <!-- CARD 1 -->
+      <div class="card shadow-sm rounded-0 p-4">
+        <img src="${infoCard[i].image}" class="card-img-top rounded-0" alt="fotoVacanza" />
+        <div class="card-body p-0 pt-3">
+          <h5 class="card-title">${infoCard[i].title}</h5>
+          <p class="card-text">${infoCard[i].date}</p>
+          <img id="pin" src="./assets/img/pin.svg" alt="" />
+        </div>
+      </div>
+    </div>`;
+  }
+
+  //   Termine caricamento e incollo l'HTML CARD
+  rowForCard.innerHTML = cardHTML;
+  return;
+};
