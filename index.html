@@ -14,8 +14,8 @@
 
     <!-- COLLEGAMENTO FONTAWESOME -->
     <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
 
     <!-- COLLEGAMENTO BOOTSTRAP -->
@@ -47,11 +47,25 @@
 
   <body>
     <div class="wrapper min-vh-100">
-      <div class="" id="overlay ">
-        <div class="row">
-          <div class="col"></div>
+      <!-- OVERLAY -->
+      <div id="overlay" class="d-flex flex-column justify-content-between">
+        <!-- RIGA 1: X di chiusura -->
+        <div class="d-flex justify-content-end p-3">
+          <i class="fa-solid fa-xmark close-icon" id="close-overlay"></i>
+        </div>
+
+        <!-- RIGA 2: immagine -->
+        <div
+          class="d-flex justify-content-center align-items-center flex-grow-1"
+        >
+          <img
+            id="overlay-image"
+            src="./assets/img/fotoProva.jpg"
+            alt="Immagine Overlay"
+          />
         </div>
       </div>
+
       <!------------------------- HEADER ------------------------->
       <header
         class="bg-primary text-center d-flex align-items-center justify-content-center"

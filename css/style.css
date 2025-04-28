@@ -43,22 +43,50 @@ main {
   transform: translateX(-50%);
 }
 
+/* Transition Card */
 .card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Card over - Ingrandimento e rotazione */
 .card:hover {
   transform: scale(1.1) rotate(-2deg);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
   z-index: 10;
 }
 
+/* ----------------------------------- OVERLAY -----------------------------------*/
+
+/* Stile overlay */
 #overlay {
   z-index: 100;
   position: absolute;
   top: 0;
-  bottom: 0;
-  right: 0;
   left: 0;
+  right: 0;
+  bottom: 0;
   background-color: rgba(0, 0, 0, 0.8);
+  justify-content: space-between;
+}
+/* Icona chiusura */
+.fa-solid {
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Animazione tasto chiusura */
+.fa-solid:hover {
+  transform: scale(1.5) rotate(-10deg);
+}
+
+/* Gestione responsive immagine */
+#overlay img {
+  width: 100%;
+  height: auto;
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
 }
