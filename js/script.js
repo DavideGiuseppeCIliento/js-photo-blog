@@ -83,4 +83,17 @@ const isImageSelected = (infoCard) => {
 // SHOW IMMAGINE SELEZIONATA
 const showImageSelected = (imageSelected) => {
   console.log("URL SELEZIONATO" + imageSelected);
+  const overlay = document.getElementById("overlay");
+  const overlayImage = document.getElementById("overlay-image");
+  const closeIcon = document.getElementById("close-overlay");
+
+  // 1. Tolgo d-none per mostrare l'overlay
+  overlay.classList.remove("d-none");
+
+  // 2. Cambio l'immagine
+  overlayImage.setAttribute("src", imageSelected);
+
+  closeIcon.addEventListener("click", () => {
+    overlay.classList.add("d-none");
+  });
 };
