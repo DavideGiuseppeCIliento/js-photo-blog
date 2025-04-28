@@ -60,14 +60,16 @@ main {
 /* Stile overlay */
 #overlay {
   z-index: 100;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.8);
   justify-content: space-between;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
 }
+
 /* Icona chiusura */
 .fa-solid {
   font-size: 2rem;
@@ -89,4 +91,8 @@ main {
   max-width: 90vw;
   max-height: 80vh;
   object-fit: contain;
+}
+
+.no-scroll {
+  overflow: hidden;
 }

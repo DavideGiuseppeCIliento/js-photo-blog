@@ -87,13 +87,16 @@ const showImageSelected = (imageSelected) => {
   const overlayImage = document.getElementById("overlay-image");
   const closeIcon = document.getElementById("close-overlay");
 
-  // 1. Tolgo d-none per mostrare l'overlay
+  // 1. Tolgo d-none per mostrare l'overlay e impedisco lo scroll
   overlay.classList.remove("d-none");
+  document.body.classList.add("no-scroll");
 
-  // 2. Cambio l'immagine
+  // 2. Cambio l'immagine e riattivo lo scroll
   overlayImage.setAttribute("src", imageSelected);
 
+  // Alla chiusura dell'overlay riattivo lo scroll e chiudo l'ovelay
   closeIcon.addEventListener("click", () => {
     overlay.classList.add("d-none");
+    document.body.classList.remove("no-scroll");
   });
 };
