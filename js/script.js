@@ -1,5 +1,3 @@
-// # DICHIARAZIONI GLOBALI
-
 // # ACQUISIZIONE
 // Dichiarazione Stringa HTML
 const rowForCard = document.getElementById("row-for-card");
@@ -73,7 +71,7 @@ const isImageSelected = (infoCard) => {
       console.log(idCard);
       console.log(infoCard[i].id);
       if (idCard === String(infoCard[i].id))
-        showImageSelected(infoCard[i].image);
+        showImageSelected(infoCard[i].image, selectedCard);
       // Zoom immagine con overlay
     });
   });
@@ -81,15 +79,18 @@ const isImageSelected = (infoCard) => {
 };
 
 // SHOW IMMAGINE SELEZIONATA
-const showImageSelected = (imageSelected) => {
+const showImageSelected = (imageSelected, selectedCard) => {
   console.log("URL SELEZIONATO" + imageSelected);
+  // # ACQUISIZIONE DOM
   const overlay = document.getElementById("overlay");
   const overlayImage = document.getElementById("overlay-image");
   const closeIcon = document.getElementById("close-overlay");
+  const body = document.querySelector("body");
 
   // 1. Tolgo d-none per mostrare l'overlay e impedisco lo scroll
   overlay.classList.remove("d-none");
-  document.body.classList.add("no-scroll");
+  selectedCard.classList.add("d-none");
+  body.classList.add("no-scroll");
 
   // 2. Cambio l'immagine e riattivo lo scroll
   overlayImage.setAttribute("src", imageSelected);
@@ -97,6 +98,7 @@ const showImageSelected = (imageSelected) => {
   // Alla chiusura dell'overlay riattivo lo scroll e chiudo l'ovelay
   closeIcon.addEventListener("click", () => {
     overlay.classList.add("d-none");
-    document.body.classList.remove("no-scroll");
+    body.classList.remove("no-scroll");
+    selectedCard.classList.remove("d-none");
   });
 };

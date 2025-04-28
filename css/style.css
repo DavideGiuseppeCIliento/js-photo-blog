@@ -45,6 +45,7 @@ main {
 
 /* Transition Card */
 .card {
+  cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -74,7 +75,6 @@ main {
 .fa-solid {
   font-size: 2rem;
   color: white;
-  cursor: pointer;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
