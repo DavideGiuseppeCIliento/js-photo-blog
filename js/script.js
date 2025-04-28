@@ -18,6 +18,7 @@ axios.get("https://lanciweb.github.io/demo/api/pictures/").then((response) => {
       title: dataAPI[i].title,
       date: dataAPI[i].date,
       image: dataAPI[i].url,
+      id: dataAPI[i].id,
     });
 
     // // Console Test
@@ -26,10 +27,16 @@ axios.get("https://lanciweb.github.io/demo/api/pictures/").then((response) => {
     // console.log(infoCard[i].image);
   }
 
+  // Stampa griglia
   stampaHTML(infoCard);
+  // Seleziona immagine
+  isImageSelected(infoCard);
 });
 
+// # FUNZIONI
+
 // FUNZIONE DI STAMPA
+
 const stampaHTML = (infoCard) => {
   // Dichiarazione Stringa HTML
   let cardHTML = "";
@@ -37,7 +44,7 @@ const stampaHTML = (infoCard) => {
     // Creazione STRING HTML
     cardHTML += `<div class="col-12 col-md-6 col-lg-4 p-3 position-relative ">
       <!-- CARD 1 -->
-      <div class="card shadow-sm rounded-0 p-4">
+      <div class="card shadow-sm rounded-0 p-4" id="${infoCard[i].id}">
         <img src="${infoCard[i].image}" class="card-img-top rounded-0" alt="fotoVacanza" />
         <div class="card-body p-0 pt-3">
           <h5 class="card-title">${infoCard[i].title}</h5>
@@ -51,4 +58,29 @@ const stampaHTML = (infoCard) => {
   //   Termine caricamento e incollo l'HTML CARD
   rowForCard.innerHTML = cardHTML;
   return;
+};
+
+// SELEZIONE IMMAGINE CON ACQUISIZIONE URL
+
+const isImageSelected = (infoCard) => {
+  // # ACQUISIZIONE DOM
+  const gridCards = document.querySelectorAll(".card");
+  console.log(gridCards);
+  // Acquisiione immagine dalla Card selezionata
+  gridCards.forEach((selectedCard, i) => {
+    selectedCard.addEventListener("click", () => {
+      const idCard = selectedCard.getAttribute(`id`);
+      console.log(idCard);
+      console.log(infoCard[i].id);
+      if (idCard === String(infoCard[i].id))
+        showImageSelected(infoCard[i].image);
+      // Zoom immagine con overlay
+    });
+  });
+  return;
+};
+
+// SHOW IMMAGINE SELEZIONATA
+const showImageSelected = (imageSelected) => {
+  console.log("URL SELEZIONATO" + imageSelected);
 };
