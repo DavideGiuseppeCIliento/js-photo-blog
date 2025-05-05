@@ -1,5 +1,5 @@
 // # ACQUISIZIONE
-// Dichiarazione Stringa HTML
+// Dichiarazione Stringa HTML Riga per Card
 const rowForCard = document.getElementById("row-for-card");
 
 // # CHIAMATA API
@@ -29,6 +29,8 @@ axios.get("https://lanciweb.github.io/demo/api/pictures/").then((response) => {
   stampaHTML(infoCard);
   // Seleziona immagine
   isImageSelected(infoCard);
+  // Console src
+  srcNameStamp();
 });
 
 // # FUNZIONI
@@ -61,18 +63,17 @@ const stampaHTML = (infoCard) => {
 // SELEZIONE IMMAGINE CON ACQUISIZIONE URL
 
 const isImageSelected = (infoCard) => {
-  // # ACQUISIZIONE DOM
+  // Acquisimo dal DOM tutte le card stampate in precedenza
   const gridCards = document.querySelectorAll(".card");
-  console.log(gridCards);
-  // Acquisiione immagine dalla Card selezionata
+
+  // Per ogni Cardstampata al click acquisiamo Id e confrontiamo
   gridCards.forEach((selectedCard, i) => {
     selectedCard.addEventListener("click", () => {
+      // 1. Al click leggiamo l'attributo id alla card
       const idCard = selectedCard.getAttribute(`id`);
-      console.log(idCard);
-      console.log(infoCard[i].id);
+      // 2. Se corrisponde all'id dell'oggetto dell'arry acquisiamol'url
       if (idCard === String(infoCard[i].id))
         showImageSelected(infoCard[i].image, selectedCard);
-      // Zoom immagine con overlay
     });
   });
   return;
@@ -92,7 +93,7 @@ const showImageSelected = (imageSelected, selectedCard) => {
   selectedCard.classList.add("d-none");
   body.classList.add("no-scroll");
 
-  // 2. Cambio l'immagine e riattivo lo scroll
+  // 2. Cambio l'immagine
   overlayImage.setAttribute("src", imageSelected);
 
   // Alla chiusura dell'overlay riattivo lo scroll e chiudo l'ovelay
@@ -102,3 +103,16 @@ const showImageSelected = (imageSelected, selectedCard) => {
     selectedCard.classList.remove("d-none");
   });
 };
+
+// Funzione per mostrare gli src
+function srcNameStamp() {
+  let arrayImg = [];
+
+  let immaginiNode = document.querySelectorAll(".card-img-top");
+  immaginiNode.forEach((nodo) => {
+    arrayImg.push(nodo.getAttribute(`src`));
+  });
+
+  console.log(immaginiNode);
+  console.table(arrayImg);
+}

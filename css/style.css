@@ -89,7 +89,7 @@ main {
   height: auto;
   max-width: 90vw;
   max-height: 80vh;
-  object-fit: contain;
+  object-fit: contain; /*Lo adatto al contenitore*/
 }
 
 .no-scroll {
